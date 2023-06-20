@@ -1,4 +1,4 @@
-import { ContactPage, LoginPage, MainLayout, RegisterPage } from 'components';
+import { ContactPage, LoginPage, Layout, RegisterPage } from 'components';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -19,14 +19,14 @@ export const App = () => {
     <>
       {isAuth ? (
         <Routes>
-          <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Layout />}>
             <Route path="/contacts" element={<ContactPage />} />
             <Route path="*" element={<Navigate to="/contacts" />} />
           </Route>
         </Routes>
       ) : (
         <Routes>
-          <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Layout />}>
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<Navigate to="/login" />} />

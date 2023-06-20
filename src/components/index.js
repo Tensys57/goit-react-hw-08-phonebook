@@ -1,4 +1,4 @@
-export { default as MainLayout } from './MainLayout/MainLayout';
+export { default as Layout } from './Layout/Layout';
 export { default as Menu } from './Menu/Menu';
 export { default as UserMenu } from './UserMenu/UserMenu';
 export { default as ContactForm } from './ContactForm/ContactForm';

@@ -7,10 +7,10 @@ const UserMenu = () => {
   const dispatch = useDispatch();
   return (
     <WrapStyled>
-      <p>{useSelector(selectLogout)}</p>
       <LogoutStyled type="button" onClick={() => dispatch(logoutUser())}>
         Logout
       </LogoutStyled>
+      <p>{useSelector(selectLogout)}</p>
     </WrapStyled>
   );
 };

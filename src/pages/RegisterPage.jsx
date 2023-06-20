@@ -5,6 +5,7 @@ import { registerUser } from 'redux/auth/authOperations';
 import { selectError } from 'redux/auth/authSelector';
 import { resetError } from 'redux/auth/authSlice';
 import { useEffect } from 'react';
+
 const optionsRegisterForm = [
   {
     label: 'Name',
@@ -38,13 +39,13 @@ const RegisterPage = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(resetError()); // Сброс значения error при монтировании компонента
+    dispatch(resetError());
   }, [dispatch]);
 
   const handleRegisterUser = data => {
     dispatch(registerUser(data));
   };
-  console.log('error======', error);
+  console.log(error);
   return (
     <>
       <AuthForm
@@ -54,7 +55,7 @@ const RegisterPage = () => {
         initialState={initialState}
       />
       {error && (
-        <div style={{ color: 'red', textAlign: 'center', fontSize: 40 }}>
+        <div style={{ color: 'red', textAlign: 'center', fontSize: 32 }}>
           Error: {error}
         </div>
       )}

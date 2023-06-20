@@ -6,6 +6,7 @@ export const FormStyled = styled.form`
   width: 400px;
   padding: 10px;
   border: solid #cccccc;
+  // margin-top: 100px;
 `;
 
 export const LabelStyled = styled.label`
@@ -17,15 +18,15 @@ export const LabelStyled = styled.label`
 export const InputStyled = styled.input`
   margin-bottom: 10px;
   padding: 5px;
-  font-size: 20px;
+  font-size: 12px;
 `;
 
 export const BtnStyled = styled.button`
   display: inline-block;
   padding: 5px;
-  margin: 0 20px;
+  margin: 30px 20px;
   font-size: 16px;
-  background-color: #aaaaaa;
+  background-color: lightgrey;
   border-radius: 15px;
 
   &:hover {
@@ -42,11 +43,11 @@ export const TitleStyled = styled.h1`
 
 export const SubtitleStyled = styled.h2`
   margin: 40px auto 0;
-  font-size: 36px;
+  font-size: 24px;
 `;
 
 export const CaptionFStyled = styled.h3`
   margin: 20px auto;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 400;
 `;

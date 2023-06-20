@@ -17,7 +17,7 @@ export const LogoutStyled = styled.button`
   border-radius: 15px;
   color: #5a5df7;
   font-weight: 700;
-  /* background-color: #f2e53b; */
+  margin-left: 30px;
   &:hover {
     background-color: #f2e53b;
   }

@@ -8,8 +8,10 @@ export const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px 0;
+  padding: 24px 0;
   font-size: 20px;
   color: #ffffff;
-  background-color: #4d4e6d;
+  // background-color: #4d4e6d;
+  background-color: lightblue;
+  margin-bottom: 50px;
 `;
