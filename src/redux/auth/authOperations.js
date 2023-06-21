@@ -1,25 +1,28 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+export const publicApi = axios.create({
+  baseURL: 'https://connections-api.herokuapp.com',
+});
+
 const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    publicApi.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    publicApi.defaults.headers.common.Authorization = '';
   },
 };
 
 const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
+  publicApi.defaults.headers.common.Authorization = '';
 };
 
 export const registerUser = createAsyncThunk(
   'auth/register',
   async ({ name, email, password }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/signup', {
+      const { data } = await publicApi.post('/users/signup', {
         name,
         email,
         password,
@@ -36,7 +39,10 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/login', { email, password });
+      const { data } = await publicApi.post('/users/login', {
+        email,
+        password,
+      });
       token.set(data.token);
       return data;
     } catch (error) {
@@ -49,7 +55,7 @@ export const logoutUser = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/logout');
+      const { data } = await publicApi.post('/users/logout');
       token.unset();
       clearAuthHeader();
       return data;
@@ -62,10 +68,10 @@ export const logoutUser = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk(
   'auth/get/curUser',
   async (_, { getState, rejectWithValue }) => {
-    const hesToken = getState().auth.token;
-    token.set(hesToken);
+    const hasToken = getState().auth.token;
+    token.set(hasToken);
     try {
-      const { data } = await axios.get('/users/current');
+      const { data } = await publicApi.get('/users/current');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

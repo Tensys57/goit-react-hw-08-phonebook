@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { LogoutStyled, WrapStyled } from './UserMenuStyled';
 import { logoutUser } from 'redux/auth/authOperations';
-import { selectLogout } from 'redux/auth/authSelector';
+import { selectEmail } from 'redux/auth/authSelector';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const UserMenu = () => {
       <LogoutStyled type="button" onClick={() => dispatch(logoutUser())}>
         Logout
       </LogoutStyled>
-      <p>{useSelector(selectLogout)}</p>
+      <p>{useSelector(selectEmail)}</p>
     </WrapStyled>
   );
 };

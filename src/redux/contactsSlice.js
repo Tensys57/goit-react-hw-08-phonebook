@@ -1,4 +1,4 @@
-import { addContact, getContact, removeContact } from './contactsOperations';
+import { addContact, getContact, deleteContact } from './contactsOperations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -27,7 +27,7 @@ const contactsSlice = createSlice({
       .addCase(getContact.fulfilled, (state, { payload }) => {
         state.contacts = payload;
       })
-      .addCase(removeContact.fulfilled, (state, { payload }) => {
+      .addCase(deleteContact.fulfilled, (state, { payload }) => {
         state.contacts = state.contacts.filter(el => el.id !== payload);
       })
       .addMatcher(
